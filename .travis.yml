@@ -1,9 +1,8 @@
 language: java
-dist: trusty
-jdk: oraclejdk8
+jdk: openjdk8
 before_install:
   - pip install --user codecov
-install: travis_wait mvn install
+install: travis_wait mvn install -Dmaven.javadoc.skip=true -V -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 after_success:
   - codecov
 cache:
